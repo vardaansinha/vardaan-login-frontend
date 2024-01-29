@@ -26,22 +26,22 @@
                     </div>
                     <button onclick="showNextField()">Create Account</button>
                     <div class="accountexist">
-                        <p>Already have an account? <a href="http://127.0.0.1:4000/student/signin">Sign In</a></p>
+                        <p>Already have an account? <a href="https://vardaansinha.github.io/vardaan-login-frontend/signin">Sign In</a></p>
                     </div>
                 </form>
             </div>
     </section>
     <script>
         let currentField = "nameInput";
-        const login_url = "http://localhost:8085/authenticate";
+        const login_url = "https://varshiesty.stu.nighthawkcodingsociety.com/authenticate";
         // prepare URL
         //var url = "https://spring.nighthawkcodingsociety.com/api/person/";
         // Uncomment next line for localhost testing
-        const read_url = "http://localhost:8085/api/person/";
+        const read_url = "https://varshiesty.stu.nighthawkcodingsociety.com/api/person/";
         //var url = "https://spring.nighthawkcodingsociety.com/api/person/";
         // Uncomment next line for localhost testing
-        const post_url = "http://localhost:8085/api/person/post";
-        const put_url = "http://localhost:8085/api/person/update";
+        const post_url = "https://varshiesty.stu.nighthawkcodingsociety.com/api/person/post";
+        const put_url = "https://varshiesty.stu.nighthawkcodingsociety.com/api/person/update";
         function create_user(event) {
             event.preventDefault();
             const createBody = {
@@ -87,7 +87,7 @@
             if (response.status === 201){
                 console.log('Account created!');
                 alert("Your account has been created!");
-                window.location.href = "http://127.0.0.1:4000/student/signin";
+                window.location.href = "https://vardaansinha.github.io/vardaan-login-frontend/signin";
                 return;
             }
             if (response.status !== 200) {
