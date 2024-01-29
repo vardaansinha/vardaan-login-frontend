@@ -84,54 +84,53 @@
 
         function login_user(event) {
             if (event) {
-            event.preventDefault();
-            // Set body to include login data
-            const emailInput = document.getElementById("emailInput");
-            const passwordInput = document.getElementById("passwordInput");
-
-            if (currentField === "emailField" && emailInput.value.trim() === "") {
-                alert("Please enter your email");
-                return;
-            } else if (currentField === "passwordField" && passwordInput.value.trim() === "") {
-                alert("Please enter your password");
-                return;
-            }
-
-            // Set Headers to support cross-origin
-            const authBody = {
-                email: emailInput.value,
-                password: passwordInput.value
-            };
-
-            const authOptions = {
-                method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'include',
-                body: JSON.stringify(authBody),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            };
-        // new code begin
-            // Fetch JWT 
-            fetch(login_url, authOptions)
-                .then(response => {
-                    if (!response.ok) {
-                        const errorMsg = 'Login error: ' + response.status;
-                        console.log(errorMsg);
-                        return;
-                    }
-                    if (response.ok) {
+                event.preventDefault();
+                // Set body to include login data
+                const emailInput = document.getElementById("emailInput");
+                const passwordInput = document.getElementById("passwordInput");
+        
+                if (currentField === "emailField" && emailInput.value.trim() === "") {
+                    alert("Please enter your email");
+                    return;
+                } else if (currentField === "passwordField" && passwordInput.value.trim() === "") {
+                    alert("Please enter your password");
+                    return;
+                }
+        
+                // Set Headers to support cross-origin
+                const authBody = {
+                    email: emailInput.value,
+                    password: passwordInput.value
+                };
+        
+                const authOptions = {
+                    method: 'POST',
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    credentials: 'include',
+                    body: JSON.stringify(authBody),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                };
+        
+                // Fetch JWT 
+                fetch(login_url, authOptions)
+                    .then(response => {
+                        if (!response.ok) {
+                            const errorMsg = 'Login error: ' + response.status;
+                            console.log(errorMsg);
+                            return;
+                        }
+        
                         console.log('Successful fetch');
-                        return;
-                    }
-                    // Success!!!
-                    // Redirect to Database location
-                    // window.location.href = "/APCSA/data/database";
-                });
+                        
+                        // Redirect after successful authentication
+                        window.location.href = 'http://127.0.0.1:4000/student/test';
+                    });
             }
         }
+        
         // new code end
         function read_pull() {
             // Set options for cross-origin header request
